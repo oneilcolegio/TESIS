@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Nombre de la Base de datos: `sistemaWeb`
+-- Nombre de la Base de datos: `sistema_Web_oneil`
 --
 
 -- --------------------------------------------------------
@@ -71,45 +71,43 @@ COMMIT;
 
 
 CREATE TABLE IF NOT EXISTS `estudiantes` (
-`idobs` int(11) NOT NULL,
-  `idalumno` int(11) DEFAULT NULL,
-  `codalumno` int(11) DEFAULT NULL,
-  `codreg` varchar(60) CHARACTER SET latin1 DEFAULT NULL,
+`id` int(11) NOT NULL,
+  `cedula` int(11) DEFAULT NULL,
   `nombres` varchar(60) CHARACTER SET latin1 DEFAULT NULL,
   `correo` varchar(60) CHARACTER SET latin1 DEFAULT NULL,
   `telef` int(11) NOT NULL,
   `repre` varchar(60) CHARACTER SET latin1 DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `obs` text
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='Tabla observacion';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Tabla registro estudiantes';
 
 --
--- Volcado de datos para la tabla `matriculaobs`
+-- Volcado de datos para la tabla `estudiantes`
 --
 
-INSERT INTO `estudiantes` (`idobs`, `idalumno`, `codalumno`, `codreg`, `nombres`, `correo`, `telef`, `repre`, `fecha`, `obs`) VALUES
-(1, 5175, 23980956, '42128306141AAGEJE151018', 'Villa Prado José', 'villa_pra12@outlook.com', '0987562322', 'Villalta Rojas Carlos', '2018-10-15', 'PAGO MEDIA BECA AL CONTADO '),
-(9, 2343, 32456786, '343453', 'Vera Cruz William', 'William_vera1995@outlook.com', '0987991231', 'Saabedra Quispe Jorge', '2018-10-15', 'PAGO ADELANTADO UNA CUOTA');
+INSERT INTO `estudiantes` (`id`, `cedula`, `nombres`, `correo`, `telef`, `repre`, `fecha`, `obs`) VALUES
+(1, 23980956, 'Villa Prado José', 'villa_pra12@outlook.com', '0987562322', 'Villalta Rojas Carlos', '2018-10-15', 'SIN NOVEDAD '),
+(2, 32456786, 'Vera Cruz William', 'William_vera1995@outlook.com', '0987991231', 'Saabedra Quispe Jorge', '2018-10-15', 'SIN NOVEDAD');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `matriculaobs`
+-- Indices de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
- ADD PRIMARY KEY (`idobs`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `matriculaobs`
+-- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-MODIFY `idobs` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

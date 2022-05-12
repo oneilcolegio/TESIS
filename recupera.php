@@ -1,30 +1,48 @@
 <?php
-	session_start();
-	require 'funcs/conexion.php';
+
+    require 'funcs/conexion.php';
 	require 'funcs/funcs.php';
 
 	$errors = array();
 
 	if(!empty($_POST)){
-		$usuario = $mysqli->real_escape_string($_POST['usuario']);
-		$password = $mysqli->real_escape_string($_POST['password']);
-
-		if(isNullLogin($usuario, $password)){
-			$errors[]= "debe llenar todos los campos";
+		$email = $mysqli->real_escape_string($_POST['email']);
+		
+		if(isEmail($email)){
+			$errors[]= "El correo proporcionado no es válido";
 		}
-		$errors[]= login($usuario, $password);
+		if(emailExiste($email)){
+		 $user_id= getValor('id', 'correo', $email);
+		 $nombre= getValor('nombre', 'correo', $email);	
+		 $token= generaTokenPass($user_id);
+
+		 $url= 'http://'.$_SERVER["SERVER_NAME"].
+			'/tesis/cambia_pass.php?user_id='.$user_id.'&token='.$token;
+
+			$asunto= 'RECUPERAR CONTRASEÑA - Sistema de Usuarios';
+			$cuerpo= "Estimado $nombre: <br /><br />Ud ha solicitado RECUPERACIÓN DE CONTRASEÑA.<br/><br/> Para continuar es necesario que le de click en la siguiente dirección: <a href= '$url'>Recuperar Password</a>";
+
+			if(enviarEmail($email, $nombre, $asunto, $cuerpo)){
+                echo  "<a href= 'index.php'>Iniciar Sesión</a>";
+				exit;
+			}
+			else{
+				$errors[]= "Error al enviar el correo !!";
+			}
+		
+		}else{
+			$errors[]= "La dirección de correo proporcioanda no existe !!";
+		}
+		
 	}
 	
 ?>
-
-
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Login</title>
+		<title>Recuperar Password</title>
 		
 		<link rel="stylesheet" href="css/bootstrap.min.css" >
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css" >
@@ -38,8 +56,8 @@
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
 				<div class="panel panel-info" >
 					<div class="panel-heading">
-						<div class="panel-title">Iniciar Sesi&oacute;n</div>
-						<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="recupera.php">¿Se te olvid&oacute; tu contraseña?</a></div>
+						<div class="panel-title">Recuperar Password</div>
+						<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="index.php">Iniciar Sesi&oacute;n</a></div>
 					</div>     
 					
 					<div style="padding-top:30px" class="panel-body" >
@@ -50,17 +68,12 @@
 							
 							<div style="margin-bottom: 25px" class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-								<input id="usuario" type="text" class="form-control" name="usuario" value="" placeholder="usuario o email" required>                                        
-							</div>
-							
-							<div style="margin-bottom: 25px" class="input-group">
-								<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-								<input id="password" type="password" class="form-control" name="password" placeholder="password" required>
+								<input id="email" type="email" class="form-control" name="email" placeholder="email" required>                                        
 							</div>
 							
 							<div style="margin-top:10px" class="form-group">
 								<div class="col-sm-12 controls">
-									<button id="btn-login" type="submit" class="btn btn-success">Iniciar Sesi&oacute;n</a>
+									<button id="btn-login" type="submit" class="btn btn-success">Enviar</a>
 								</div>
 							</div>
 							
@@ -72,12 +85,10 @@
 								</div>
 							</div>    
 						</form>
-						<?php
-	                      echo resultBlock($errors);
-                        ?>
+						<?php echo resultBlock($errors); ?>
 					</div>                     
 				</div>  
 			</div>
 		</div>
 	</body>
-</html>						
+</html>							

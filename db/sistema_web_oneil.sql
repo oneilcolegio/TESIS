@@ -27,25 +27,48 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuarios` (
+CREATE TABLE IF NOT EXISTS `tipo_usuario` (
   `id` int(11) NOT NULL,
-  `usuario` varchar(40) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `nombre` varchar(80) NOT NULL,
-  `tipo_usuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `tipo` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Volcado de datos para la tabla `tipo_usuario`
 --
 
-INSERT INTO `usuarios` (`id`, `usuario`, `password`, `nombre`, `tipo_usuario`) VALUES
-(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Administrador', 1),
-(2, 'usuario', 'e6c6f0bd956e9147cc453a9708f4926f8e60e477', 'Usuario Normal', 2);
+INSERT INTO `tipo_usuario` (`id`, `tipo`) VALUES
+(1, 'Administrador'),
+(2, 'Usuario');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(30) NOT NULL,
+  `password` varchar(130) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `correo` varchar(80) NOT NULL,
+  `last_session` datetime DEFAULT NULL,
+  `activacion` int(11) NOT NULL DEFAULT '0',
+  `token` varchar(40) NOT NULL,
+  `token_password` varchar(100) DEFAULT NULL,
+  `password_request` int(11) DEFAULT '0',
+  `id_tipo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Índices para tablas volcadas
+-- $2y$10$1hNIbw1jac11huhkvyN9h05qm48cTm/B633az3cCOeJ/KWua2qxdy
+
 --
+-- Indices de la tabla `tipo_usuario`
+--
+ALTER TABLE `tipo_usuario`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -58,12 +81,15 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `tipo_usuario`
+--
+ALTER TABLE `tipo_usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

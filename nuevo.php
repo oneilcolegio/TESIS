@@ -13,7 +13,7 @@
 				<h3 style="text-align:center">NUEVO REGISTRO</h3>
 			</div>
 			
-			<form class="form-horizontal" method="POST" action="guardar.php" autocomplete="off">
+			<form class="form-horizontal"  autocomplete="off" method="POST" action="guardar.php" enctype="multipart/form-data">
 			<div class="form-group">
 					<label for="cedula" class="col-sm-2 control-label">Cédula</label>
 					<div class="col-sm-10">
@@ -62,6 +62,14 @@
 						<!--<input type="text" class="form-control" id="obs" name="obs" placeholder="Representante" required>-->
 					</div>
 				</div>
+
+				<div class="form-group">
+					<label for="foto" class="col-sm-2 control-label">Foto</label>
+					<div class="col-sm-10">
+						<input type="file" class="form-control" id="foto" name="foto" accept="image/*">
+					</div>
+				</div>
+
 				
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">

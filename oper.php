@@ -80,6 +80,8 @@
 							<th>Representante</th>
 							<th>Fecha</th>
 							<th>Observación</th>
+							<th>Foto</th>
+							<th></th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -96,6 +98,10 @@
 								<td><?php echo $row['repre']; ?></td>
 								<td><?php echo $row['fecha']; ?></td>
 								<td><?php echo $row['obs']; ?></td>
+								<td><img height= "40px" src= "date:image/jpeg;base64, <?php echo base64_encode ($row['foto']) ?> "></td>
+						
+
+								<td><a href="qr.php?id=<?php echo $row['id']; ?>"><span class="glyphicon glyphicon-qrcode"></span></a></td>
 								<td><a href="modificar.php?id=<?php echo $row['id']; ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
 								<td><a href="#" data-href="eliminar.php?id=<?php echo $row['id']; ?>" data-toggle="modal" data-target="#confirm-delete"><span class="glyphicon glyphicon-trash"></span></a></td>
 							</tr>

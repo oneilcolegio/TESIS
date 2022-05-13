@@ -10,8 +10,11 @@
 	$repre = $_POST['repre'];
 	$fecha = $_POST['fecha'];
 	$obs = $_POST['obs'];
+	$obs = $_POST['foto'];
+	//$foto= addslashes(file_get_contents($_FILES['foto']['tmp_name']));
+	$qr= $_POST['qr'];
 	
-	$sql = "UPDATE estudiantes SET cedula= '$cedula', nombres='$nombres', correo='$correo', telef='$telef', repre='$repre', fecha='$fecha', obs='$obs' WHERE id = '$id'";
+	$sql = "UPDATE estudiantes SET cedula= '$cedula', nombres='$nombres', correo='$correo', telef='$telef', repre='$repre', fecha='$fecha', obs='$obs', foto='$foto' WHERE id = '$id'";
 	$resultado = $mysqli->query($sql);
 	
 ?>

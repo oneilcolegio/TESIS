@@ -194,10 +194,10 @@ use PHPMailer\PHPMailer\Exception;
 			$stmt->fetch();
 			
 			if($activacion == 1){
-				$msg = "La cuenta ya se activo anteriormente.";
+				$msg = "La cuenta ya se activo anteriormente.<br /><br / Ya puedes iniciar sesión !!";
 				} else {
 				if(activarUsuario($id)){
-					$msg = 'Cuenta activada.';
+					$msg = 'Cuenta activada. <br /><br / Ve a iniciar sesión.';
 					} else {
 					$msg = 'Error al Activar Cuenta';
 				}
@@ -232,7 +232,7 @@ use PHPMailer\PHPMailer\Exception;
 	
 	function login($usuario, $password)
 	{
-		session_start();
+		//session_start();
 		global $mysqli;
 		
 		$stmt = $mysqli->prepare("SELECT id, id_tipo, password FROM usuarios WHERE usuario = ? || correo = ? LIMIT 1");

@@ -25,6 +25,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Login</title>
+
 		
 		<link rel="stylesheet" href="css/bootstrap.min.css" >
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css" >
@@ -46,27 +47,29 @@
 						
 						<div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 						
-						<form id="loginform" class="form-horizontal" role="form" action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" autocomplete="off">
-							
+						<form id="loginform" class="text-center" role="form" action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" autocomplete="off">
+						<img width="150" height="120"  src="resources/img/login.png">
+						<form autocomplete="off" action="" class="form-validate">
 							<div style="margin-bottom: 25px" class="input-group">
+	
 								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 								<input id="usuario" type="text" class="form-control" name="usuario" value="" placeholder="usuario o email" required>                                        
 							</div>
 							
-							<div style="margin-bottom: 25px" class="input-group">
+							<div style="margin-bottom: 20px" class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 								<input id="password" type="password" class="form-control" name="password" placeholder="password" required>
 							</div>
 							
 							<div style="margin-top:10px" class="form-group">
-								<div class="col-sm-12 controls">
+								<div class="col-sm-12 controls" style="margin-bottom: 20px">
 									<button id="btn-login" type="submit" class="btn btn-success">Iniciar Sesi&oacute;n</a>
 								</div>
 							</div>
 							
 							<div class="form-group">
-								<div class="col-md-12 control">
-									<div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+								<div class="col-md-12 control" style="margin-bottom: 20px">
+									<div style="border-top: 1px solid#888; padding-top:15px; font-size:90%" >
 										No tiene una cuenta! <a href="registro.php">Registrate aquí</a>
 									</div>
 								</div>

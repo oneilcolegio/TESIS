@@ -104,16 +104,18 @@ CREATE TABLE IF NOT EXISTS `estudiantes` (
   `telef` int(11) NOT NULL,
   `repre` varchar(60) CHARACTER SET latin1 DEFAULT NULL,
   `fecha` date DEFAULT NULL,
-  `obs` text
+  `obs` text,
+  `foto` LONGBLOB,
+  `qr` varchar(100)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Tabla registro estudiantes';
 
 --
 -- Volcado de datos para la tabla `estudiantes`
 --
 
-INSERT INTO `estudiantes` (`id`, `cedula`, `nombres`, `correo`, `telef`, `repre`, `fecha`, `obs`) VALUES
-(1, 23980956, 'Villa Prado José', 'villa_pra12@outlook.com', '0987562322', 'Villalta Rojas Carlos', '2018-10-15', 'SIN NOVEDAD '),
-(2, 32456786, 'Vera Cruz William', 'William_vera1995@outlook.com', '0987991231', 'Saabedra Quispe Jorge', '2018-10-15', 'SIN NOVEDAD');
+INSERT INTO `estudiantes` (`id`, `cedula`, `nombres`, `correo`, `telef`, `repre`, `fecha`, `obs`, `foto`, `qr`) VALUES
+(1, 23980956, 'Villa Prado José', 'villa_pra12@outlook.com', '0987562322', 'Villalta Rojas Carlos', '2018-10-15', 'SIN NOVEDAD', '', ''),
+(2, 32456786, 'Vera Cruz William', 'William_vera1995@outlook.com', '0987991231', 'Saabedra Quispe Jorge', '2018-10-15', 'SIN NOVEDAD', '', '');
 
 --
 -- Índices para tablas volcadas

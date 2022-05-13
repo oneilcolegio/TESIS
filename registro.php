@@ -54,7 +54,7 @@
 		
 			if(enviarEmail($email, $nombre, $asunto, $cuerpo)){
 				echo "Para terminar el proceso de registro siga las instrucciones que se han enviado a la dirección de correo: $email";
-               // echo "<br><a href= 'index.php'>Iniciar Sesion </a>";
+               echo "<br><a href= 'index.php'>Iniciar Sesion </a>";
 				exit;
 			}
 			else{

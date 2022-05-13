@@ -78,12 +78,19 @@
 				<div class="form-group">
 					<label for="repre" class="col-sm-2 control-label">Observación</label>
 					<div class="col-sm-10">
-					    <textarea style="text-transform:uppercase" id="obs" class="form-control" name="obs" placeholder="Observación" 
-						value="<?php echo $row['obs']; ?>" required> </textarea> 
+					    <input type="text" style="text-transform:uppercase" id="obs" class="form-control" name="obs" placeholder="Observación" 
+						value="<?php echo $row['obs']; ?>" required>  
 						<!--<input type="text" class="form-control" id="obs" name="obs" placeholder="Representante" required>-->
 					</div>
 				</div>
-				
+
+				<div class="form-group">
+					<label for="foto" class="col-sm-2 control-label">Foto</label>
+					<div class="col-sm-10">
+						<input type="file" class="form-control" id="foto" name="foto"
+						value="<?php echo $row['foto']; ?>" required> 
+					</div>
+				</div>
 				
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">

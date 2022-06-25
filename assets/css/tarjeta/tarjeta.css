@@ -1,0 +1,100 @@
+body{
+  background:#7D9DE8;
+}
+#bg {
+width: 750px;
+height: 450px;
+
+margin:30px;
+float: left;  		
+}
+#btnImp{
+
+}
+
+#id {
+width:350px;
+height:550px;
+position:absolute;
+opacity: 0.88;
+font-family: sans-serif;
+
+  transition: 0.4s;
+  background-color: #FFFFFF;
+  border-radius: 2%;
+}
+
+#letras{
+   margin-top: 0%;
+   margin-bottom: 20px;
+}
+
+#firma{
+margin-top: 30px;
+}
+#id::before {
+content: "";
+position: absolute;
+width: 100%;
+height: 100%;
+background: url('../tema.jpg');  
+background-repeat:repeat-x;
+background-size: 250px 550px;
+opacity: 0.5;
+z-index: -1;
+text-align:center; 
+border-radius: 2%;
+}
+.container{
+display: block;
+  font-size: 10px;
+  font-family: sans-serif;  
+margin-top: 100px;
+position: absolute;
+}
+.id-1{
+display: block;
+position: absolute;
+  transition: 0.4s;
+  width:350px;
+  height:548px;
+  background: #FFFFFF;
+  text-align:center;
+  font-size: 16px;
+  font-family: sans-serif;
+  float: left;
+  margin:auto;		  	
+  margin-left:350px;
+margin-top: -480px;
+  border-radius:2%; 
+}
+
+#foto{
+position: relative;
+top: -30px; /* ajustar los valores para mover la imagen */
+left: -10px;
+width: 180px;
+height: 190px;
+border-radius: 50%;
+margin: -60%;
+border:-5px solid #fff;
+display: block;
+}
+#cedula, #nombre, #apellido, #curso{
+top: 30px;
+font-size: 14px;
+font-style: italic;
+font-weight: bold;
+}
+#cod{
+right: -07%;
+}
+#ced, #nom, #ape, #cur{
+top: 30px;
+display: block;
+font-size: 14px;
+font-style:oblique;
+line-height: 240%;
+text-align: left;
+max-width: 100%;
+}

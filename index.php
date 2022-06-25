@@ -1,7 +1,8 @@
 <?php
+
 	session_start();
-	require 'funcs/conexion.php';
-	require 'funcs/funcs.php';
+	require_once ("./model/funcs/conexion.php");
+	require_once ("./model/funcs/funcs.php");
 
 	$errors = array();
 
@@ -13,6 +14,7 @@
 			$errors[]= "debe llenar todos los campos";
 		}
 		$errors[]= login($usuario, $password);
+
 	}
 	
 ?>
@@ -29,51 +31,93 @@
 		
 		<link rel="stylesheet" href="css/bootstrap.min.css" >
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css" >
-		<script src="js/bootstrap.min.js" ></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="../js/bootstrap.min.js" ></script>
 		
 	</head>
-	
-	<body>
+
+	<style>
+  body{
+		  	background:#DADDE4;
+		  }
+		  #h{
+			border-radius: 5%;
+		  }
+		  #logo{
+			
+		  }
+		  #fondo{
+			background-position: center center;
+			background-color: #F3F5F8;
+           /* background: radial-gradient(ellipse, #B4D5F5, #B7CDE2, white);*/
+		   /*background: radial-gradient(ellipse, #DFE6EE, #B5D2EE, #D7E7F8);*/
+          }
+		  #hea{
+            background-color: #1D84EA;
+		  }
+		  #titulo{
+			font-family: "Segoe UI";
+			font-size: larger;
+			color: #F3F5F8;
+		  }
+		  #usuario{
+			outline: none;
+			background-color: transparent;
+			border: 0;
+			border-color: transparent;
+		  }
+		  #btn-login{
+			background-color: #1D84EA;
+			font-family: "Segoe UI";
+			font-size: larger;
+			color: #F3F5F8;
+		  }
+		  </style>
+	<body id="cax">
 		
-		<div class="container">    
-			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
-				<div class="panel panel-info" >
-					<div class="panel-heading">
-						<div class="panel-title">Iniciar Sesi&oacute;n</div>
-						<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="recupera.php">¿Se te olvid&oacute; tu contraseña?</a></div>
+		<div class="container" id="caja">    
+			<div id="loginbox" style="margin-top:40px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+				<div id="hea" class="panel panel">
+					<div class="panel-heading" id="cas">
+						<center><b><div id="titulo" class="panel-title" >Centro Médico U.E O'neil</div></b></center>
+						
 					</div>     
 					
-					<div style="padding-top:30px" class="panel-body" >
+					<div id="fondo" style="padding-top:20px;"  class="panel-body"  >
 						
-						<div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+						<div style="display:none;" id="login-alert" class="alert alert-danger col-sm-12"></div>
 						
 						<form id="loginform" class="text-center" role="form" action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" autocomplete="off">
-						<img width="150" height="120"  src="resources/img/login.png">
+						<div id="logo"><img width="155" height="150"  src="../tesis/assets/resources/iconos/escudo.png"></div>
+                        <br>
 						<form autocomplete="off" action="" class="form-validate">
-							<div style="margin-bottom: 25px" class="input-group">
+							<br>
+							<div style="margin-bottom: 20px" class="input-group">
 	
-								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-								<input id="usuario" type="text" class="form-control" name="usuario" value="" placeholder="usuario o email" required>                                        
+								<img  src="../tesis/assets/resources/iconos/uss.png" alt="" class="col-sm-2">
+								<div class="col-sm-10">
+								<input id="usuario" type="text" class="form-control"  name="usuario" value="" placeholder="Ingrese su usuario o correo" style="background-color:transparent; border: 0;" required>                                        
+							</div>
 							</div>
 							
 							<div style="margin-bottom: 20px" class="input-group">
-								<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-								<input id="password" type="password" class="form-control" name="password" placeholder="password" required>
+							    <img  src="../tesis/assets/resources/iconos/key.png" alt="" class="col-sm-2">
+								<div class="col-sm-10">
+								<input id="password" type="password" class="form-control" name="password" placeholder="Ingrese su contraseña" style="background-color:transparent; border: 0;" required>
 							</div>
-							
+							</div>
+					
+
+							<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="../tesis/view/recupera.php">¿Olvidaste tu contraseña?</a></div>
+							<br>
 							<div style="margin-top:10px" class="form-group">
-								<div class="col-sm-12 controls" style="margin-bottom: 20px">
-									<button id="btn-login" type="submit" class="btn btn-success">Iniciar Sesi&oacute;n</a>
+								<div class="col-sm-12 controls" style="margin-bottom: 20px;">
+									<button id="btn-login" type="submit" class="btn btn">Iniciar Sesi&oacute;n <i class="icon-lock5"></button>
+									
 								</div>
 							</div>
-							
-							<div class="form-group">
-								<div class="col-md-12 control" style="margin-bottom: 20px">
-									<div style="border-top: 1px solid#888; padding-top:15px; font-size:90%" >
-										No tiene una cuenta! <a href="registro.php">Registrate aquí</a>
-									</div>
-								</div>
-							</div>    
+							<br>
+		
 						</form>
 						<?php
 	                      echo resultBlock($errors);
@@ -82,5 +126,6 @@
 				</div>  
 			</div>
 		</div>
+	
 	</body>
 </html>						
